@@ -4,6 +4,7 @@
 
 - Required TLS 1.2 or newer unconditionally for certificate inspection.
 - Corrected repository badges and vulnerability-reporting links after the BlueDot migration.
+- Made CI and release dependency installation consume committed hash-locked requirements.
 
 ## 0.2.0 — 2026-07-25
 
