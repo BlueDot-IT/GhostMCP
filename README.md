@@ -4,7 +4,7 @@
 
 # GhostMCP
 
-[![Release](https://img.shields.io/github/v/release/BlueDot-IT/GhostMCP)](https://github.com/BlueDot-IT/GhostMCP/releases/latest)
+[![Release](https://img.shields.io/github/v/release/BlueDot-IT/GhostMCP?cacheSeconds=300)](https://github.com/BlueDot-IT/GhostMCP/releases/latest)
 [![CI](https://github.com/BlueDot-IT/GhostMCP/actions/workflows/ci.yml/badge.svg)](https://github.com/BlueDot-IT/GhostMCP/actions/workflows/ci.yml)
 [![CodeQL](https://github.com/BlueDot-IT/GhostMCP/actions/workflows/codeql.yml/badge.svg)](https://github.com/BlueDot-IT/GhostMCP/actions/workflows/codeql.yml)
 [![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/BlueDot-IT/GhostMCP/badge)](https://securityscorecards.dev/viewer/?uri=github.com/BlueDot-IT/GhostMCP)
