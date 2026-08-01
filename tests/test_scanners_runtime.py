@@ -1,9 +1,41 @@
+import ssl
 import unittest
+from unittest.mock import MagicMock, patch
 
-from ghostmcp.scanners import ScannerError, ScannerTimeoutError, run_external_binary
+from ghostmcp.scanners import (
+    ScannerError,
+    ScannerTimeoutError,
+    run_external_binary,
+    tls_certificate,
+)
 
 
 class ScannerRuntimeTests(unittest.TestCase):
+    @patch("ghostmcp.scanners.socket.create_connection")
+    @patch("ghostmcp.scanners.ssl.create_default_context")
+    def test_tls_certificate_requires_tls_1_2_or_newer(
+        self, mock_create_context, mock_create_connection
+    ) -> None:
+        context = MagicMock()
+        tls_socket = MagicMock()
+        tls_socket.__enter__.return_value.getpeercert.return_value = {
+            "notBefore": "Jan 01 00:00:00 2026 GMT",
+            "notAfter": "Jan 01 00:00:00 2027 GMT",
+        }
+        context.wrap_socket.return_value = tls_socket
+        mock_create_context.return_value = context
+
+        tcp_socket = MagicMock()
+        tcp_socket.__enter__.return_value = tcp_socket
+        mock_create_connection.return_value = tcp_socket
+
+        tls_certificate("internal.example")
+
+        self.assertEqual(context.minimum_version, ssl.TLSVersion.TLSv1_2)
+        context.wrap_socket.assert_called_once_with(
+            tcp_socket, server_hostname="internal.example"
+        )
+
     def test_command_redaction_hides_sensitive_values(self) -> None:
         from ghostmcp.scanners import _redact_command
 

@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+- Required TLS 1.2 or newer unconditionally for certificate inspection.
+- Corrected repository badges and vulnerability-reporting links after the BlueDot migration.
+
 ## 0.2.0 — 2026-07-25
 
 - Added a versioned tool manifest with risk, capability, target-field, routing, availability, and sensitive-output metadata.
