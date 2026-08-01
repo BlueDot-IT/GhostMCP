@@ -2,9 +2,9 @@
 
 ## Supported versions
 
-GhostMCP is currently an alpha project. Security updates are provided for the latest `main` branch. Older commits, unmerged branches, locally modified copies, and prerelease artifacts may not receive fixes.
+GhostMCP is currently a beta project. Security updates are provided for the latest `main` branch. Older commits, unmerged branches, locally modified copies, and prerelease artifacts may not receive fixes.
 
-The package version is `0.2.0a1`. Review configuration and deployment changes before upgrading between alpha revisions.
+The current package version is `0.2.0`. Review configuration and deployment changes before upgrading between beta revisions.
 
 ## Reporting a vulnerability
 
@@ -12,7 +12,7 @@ Do not open a public issue containing vulnerability details, exploit code, crede
 
 Preferred reporting method:
 
-- Use [GitHub Security Advisories](https://github.com/jason-allen-oneal/GhostMCP/security/advisories/new).
+- Use [GitHub Security Advisories](https://github.com/BlueDot-IT/GhostMCP/security/advisories/new).
 
 Include, when available:
 

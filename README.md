@@ -4,10 +4,11 @@
 
 # GhostMCP
 
-[![CI](https://github.com/jason-allen-oneal/GhostMCP/actions/workflows/ci.yml/badge.svg)](https://github.com/jason-allen-oneal/GhostMCP/actions/workflows/ci.yml)
-[![CodeQL](https://github.com/jason-allen-oneal/GhostMCP/actions/workflows/codeql.yml/badge.svg)](https://github.com/jason-allen-oneal/GhostMCP/actions/workflows/codeql.yml)
-[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/jason-allen-oneal/GhostMCP/badge)](https://securityscorecards.dev/viewer/?uri=github.com/jason-allen-oneal/GhostMCP)
-[![License](https://img.shields.io/github/license/jason-allen-oneal/GhostMCP)](LICENSE)
+[![Release](https://img.shields.io/github/v/release/BlueDot-IT/GhostMCP?cacheSeconds=300)](https://github.com/BlueDot-IT/GhostMCP/releases/latest)
+[![CI](https://github.com/BlueDot-IT/GhostMCP/actions/workflows/ci.yml/badge.svg)](https://github.com/BlueDot-IT/GhostMCP/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/BlueDot-IT/GhostMCP/actions/workflows/codeql.yml/badge.svg)](https://github.com/BlueDot-IT/GhostMCP/actions/workflows/codeql.yml)
+[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/BlueDot-IT/GhostMCP/badge)](https://securityscorecards.dev/viewer/?uri=github.com/BlueDot-IT/GhostMCP)
+[![License](https://img.shields.io/github/license/BlueDot-IT/GhostMCP)](LICENSE)
 [![Security Policy](https://img.shields.io/badge/security-policy-blue)](SECURITY.md)
 
 GhostMCP is a security-focused MCP server for authorized assessment workflows. It combines policy-guarded native tools, curated external scanners, normalized workflows, a local dashboard, scheduling, credential backends, and auditable execution.
