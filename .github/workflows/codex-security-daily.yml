@@ -17,7 +17,7 @@ jobs:
     permissions:
       actions: read
       contents: read
-    uses: BlueDot-IT/odinn-maintainer/.github/workflows/codex-security-daily.yml@b47fbd5e443b124ce8557cd3b05ee48105449f1f # reusable-v2
+    uses: BlueDot-IT/odinn-maintainer/.github/workflows/codex-security-daily.yml@fda7834c49315dee2674aa36a0d5d048c326767e # reusable-v2
     with:
       target_repository: ${{ github.repository }}
       target_ref: ${{ github.event.repository.default_branch }}
