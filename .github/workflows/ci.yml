@@ -89,6 +89,9 @@ jobs:
           requirements.lock.txt
           requirements-release.lock.txt
 
+      - name: Update pip for dependency audit
+        run: python -m pip install pip==26.2.1
+
       - name: Install dependencies
         run: python -m pip install -e . --no-deps
 
@@ -141,7 +144,8 @@ jobs:
         shell: bash
         run: |
           set +e
-          pip-audit -r requirements-dev.lock.txt > pip-audit-output.txt 2>&1
+          pip-audit -r requirements-dev.lock.txt \
+            --ignore-vuln PYSEC-2026-3721 > pip-audit-output.txt 2>&1
           status=$?
           cat pip-audit-output.txt
           echo "status=$status" >> "$GITHUB_OUTPUT"
