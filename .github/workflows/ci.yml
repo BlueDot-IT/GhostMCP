@@ -147,8 +147,7 @@ jobs:
         shell: bash
         run: |
           set +e
-          pip-audit -r requirements-dev.lock.txt \
-            --ignore-vuln PYSEC-2026-3721 > pip-audit-output.txt 2>&1
+          pip-audit -r requirements-dev.lock.txt > pip-audit-output.txt 2>&1
           status=$?
           cat pip-audit-output.txt
           echo "status=$status" >> "$GITHUB_OUTPUT"

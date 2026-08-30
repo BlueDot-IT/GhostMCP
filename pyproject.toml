@@ -34,7 +34,7 @@ dependencies = [
 [project.optional-dependencies]
 dev = [
   "pytest>=8.0.0",
-  "pip-tools>=7.6.0",
+  "pip-tools>=7.6.1",
   "ruff>=0.6.0",
   "mypy>=1.10.0",
   "bandit>=1.7.0",
