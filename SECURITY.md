@@ -4,7 +4,7 @@
 
 GhostMCP is currently a beta project. Security updates are provided for the latest `main` branch. Older commits, unmerged branches, locally modified copies, and prerelease artifacts may not receive fixes.
 
-The current package version is `0.2.0`. Review configuration and deployment changes before upgrading between beta revisions.
+The current package version is `0.2.1`. Review configuration and deployment changes before upgrading between beta revisions.
 
 ## Reporting a vulnerability
 
