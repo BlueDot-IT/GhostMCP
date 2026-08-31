@@ -28,24 +28,56 @@ class ReleaseMetadataTests(unittest.TestCase):
         self.assertIn(f"package version is `{EXPECTED_VERSION}`", readme)
         self.assertIn(f"package version is `{EXPECTED_VERSION}`", security)
 
+    def test_release_verifies_tag_before_privileged_jobs(self) -> None:
+        workflow = (ROOT / ".github/workflows/release.yml").read_text(
+            encoding="utf-8"
+        )
+        _, verification_and_release = workflow.split(
+            "\n  verify-tag:\n", maxsplit=1
+        )
+        verification_job, release_and_publish = verification_and_release.split(
+            "\n  release:\n", maxsplit=1
+        )
+        release_job, publish_job = release_and_publish.split(
+            "\n  publish-pypi:\n", maxsplit=1
+        )
+
+        ancestry_check = (
+            'git merge-base --is-ancestor "${GITHUB_SHA}" '
+            "refs/remotes/origin/main"
+        )
+        version_read = 'PACKAGE_VERSION="$(python -c'
+
+        self.assertIn("permissions:\n      contents: read", verification_job)
+        self.assertNotIn("contents: write", verification_job)
+        self.assertNotIn("id-token: write", verification_job)
+        self.assertIn(
+            "uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            verification_job,
+        )
+        self.assertIn("fetch-depth: 0", verification_job)
+        self.assertIn("persist-credentials: false", verification_job)
+        self.assertIn(ancestry_check, verification_job)
+        self.assertIn(
+            'test "v${PACKAGE_VERSION}" = "${GITHUB_REF_NAME}"',
+            verification_job,
+        )
+        self.assertLess(
+            verification_job.index(ancestry_check),
+            verification_job.index(version_read),
+        )
+
+        self.assertIn("needs: verify-tag", release_job)
+        self.assertIn("persist-credentials: false", release_job)
+        self.assertNotIn(ancestry_check, release_job)
+        self.assertIn("needs: release", publish_job)
+
     def test_release_uses_explicitly_gated_trusted_publishing(self) -> None:
         workflow = (ROOT / ".github/workflows/release.yml").read_text(
             encoding="utf-8"
         )
-        release_job, publish_job = workflow.split(
-            "\n  publish-pypi:\n", maxsplit=1
-        )
+        _, publish_job = workflow.split("\n  publish-pypi:\n", maxsplit=1)
 
-        self.assertIn("fetch-depth: 0", release_job)
-        self.assertIn(
-            'test "v${PACKAGE_VERSION}" = "${GITHUB_REF_NAME}"',
-            release_job,
-        )
-        self.assertIn(
-            'git merge-base --is-ancestor "${GITHUB_SHA}" '
-            "refs/remotes/origin/main",
-            release_job,
-        )
         self.assertIn("vars.PYPI_PUBLISH_ENABLED == 'true'", publish_job)
         self.assertIn("environment:\n      name: pypi", publish_job)
         self.assertIn("permissions:\n      id-token: write", publish_job)
