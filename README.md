@@ -250,7 +250,7 @@ CI validates Python 3.11 and 3.12, dependency locks, linting, typing, Bandit, de
 
 ## Release status
 
-The package version is `0.2.0`. The runtime is beta-quality: policy enforcement is fail-closed, but operators must still layer network egress controls, least privilege, protected secrets, and written authorization around it.
+The package version is `0.2.1`. The runtime is beta-quality: policy enforcement is fail-closed, but operators must still layer network egress controls, least privilege, protected secrets, and written authorization around it.
 
 ## License
 
